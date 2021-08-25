@@ -68,6 +68,8 @@ class HotDogClassifier:
             f.close()
         # Let our model load the model parameters from the file path defined in the first line.
         self._model.load_state_dict(load(save_path, map_location=self._device))
+        # Set the model to evaluation mode.
+        self._model.eval()
 
     def predict(self, data: io.BytesIO) -> Tuple[str, str]:
         """
