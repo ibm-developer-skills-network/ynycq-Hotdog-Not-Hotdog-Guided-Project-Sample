@@ -1,1 +1,0 @@
-# PyTorch Classification Demo
