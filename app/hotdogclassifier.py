@@ -18,11 +18,13 @@ from PIL import Image
 from torch import no_grad, load, argmax, device, cuda
 from torch.nn import Linear
 from torch.nn.functional import softmax
+import ssl
 
 
 class HotDogClassifier:
     """
-    A classifier for classifying if an image has a hotdog in it or not.
+    A classifier for classifying if an image has a hot
+    dog in it or not.
     """
 
     # The classes images being classified into.
@@ -33,6 +35,7 @@ class HotDogClassifier:
     transformations = transforms.Compose([transforms.Resize((224, 224)),
                                           transforms.ToTensor(),
                                           transforms.Normalize(mean, std)])
+    ssl._create_default_https_context = ssl._create_unverified_context
 
     def __init__(self) -> None:
         """
